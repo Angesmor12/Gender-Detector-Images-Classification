@@ -30,18 +30,26 @@
       </div>
     </div>
 
-    <select style="width: 100%;" class="algorithm-input-test">
-      <option value="https://quiet-semifreddo-50dc39.netlify.app/model_r18.onnx" data-width="224" data-n="3" data-rgb="1" data-nor="1">model_r18.onnx</option>
-      <option value="https://quiet-semifreddo-50dc39.netlify.app/model_r18_p.onnx" data-width="224" data-n="3" data-rgb="1" data-nor="1">model_r18_p.onnx</option>
+    <div class="main-content">
+      <h2 class="modal-title">Gender Detector</h2>
+      <p class="modal-description">This project utilizes an AI model trained on a diverse dataset of human facial images to accurately classify gender, employing advanced deep learning techniques.</p>
+       
+      <p class="algorithm-label">Select Model</p>
 
-      <option value="./models/model_b.onnx" data-width="50" data-n="3" data-rgb="1" data-nor="0" selected>model_b.onnx</option>
-      <option value="./models/model_b_bw.onnx" data-width="50" data-n="1" data-rgb="0" data-nor="0">model_b_bw.onnx</option>
-      <option value="./models/model_a.onnx" data-width="50" data-n="1" data-rgb="0" data-nor="0">model_a.onnx</option>
-    </select>
+      <select style="width: 100%;" class="algorithm-input">
+
+        <option value="https://quiet-semifreddo-50dc39.netlify.app/model_r18.onnx" data-width="224" data-n="3" data-rgb="1" data-nor="1">ResNet18</option>
+        <option value="https://quiet-semifreddo-50dc39.netlify.app/model_r18_p.onnx" data-width="224" data-n="3" data-rgb="1" data-nor="1">ResNet18 Pretrained</option>
+  
+        <option value="./models/model_b.onnx" data-width="50" data-n="3" data-rgb="1" data-nor="0">Simple Model</option>
+        <option value="./models/model_b_bw.onnx" data-width="50" data-n="1" data-rgb="0" data-nor="0">BW Model</option>
+        <option value="./models/model_a.onnx" data-width="50" data-n="1" data-rgb="0" data-nor="0" selected>BW Model Augmentation</option>
+  
+      </select>
+    
+    </div>
 
     <div class="modal-body md">
-      <h2 class="modal-title">Gender Detector</h2>
-      <p class="modal-description">This project uses an AI model trained on a diverse dataset of human facial images to classify gender accurately, leveraging advanced deep learning techniques.</p>
       <button class="upload-area">
         <span class="upload-area-icon">
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="340.531" height="419.116" viewBox="0 0 340.531 419.116">
@@ -58,9 +66,7 @@
     </div>
 
     <div class="modal-body md2 hidden">
-      <h2 class="modal-title">Gender Detector</h2>
-      <p class="modal-description">This project uses an AI model trained on a diverse dataset of human facial images to classify gender accurately, leveraging advanced deep learning techniques.</p>
-      <p class="modal-description">For optimal detection, please make sure to position your face closer to the camera</p>
+      <p class="modal-description">For the best results, please ensure your face is positioned closer to the camera for optimal detection.</p>
       <div class="video-container"><video id="video" autoplay playsinline style="border: 1px solid black;"></video></div>
       <div class="canvas-container"><div><canvas id="canvas" ></canvas></div></div>
     </div>
@@ -71,6 +77,8 @@
     <div class="modal-footer">
         <p>@Angelo Smorlesi</p>
     </div>
+
+
   </div>
       <script src="index.js"></script>
 </body>

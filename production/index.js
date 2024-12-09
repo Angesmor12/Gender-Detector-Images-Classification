@@ -1,16 +1,16 @@
 
 let allow = 1
 let loadingImage = document.querySelector(".loading-image-container")
-let path = "./models/model_b.onnx"
+let path = "./models/model_a.onnx"
 let width = 50
 let height = 50
-let channels = 3
-let rgb = 1
+let channels = 1
+let rgb = 0
 let nor = 0
 let loadPath = ""
 let session = ""
 
-document.querySelector(".algorithm-input-test").addEventListener("change", (e)=>{
+document.querySelector(".algorithm-input").addEventListener("change", (e)=>{
   path = e.target.value
   width = parseInt(e.target.selectedOptions[0].dataset.width)
   height = parseInt(e.target.selectedOptions[0].dataset.width)

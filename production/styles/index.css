@@ -80,6 +80,8 @@ input, button, select, textarea {
 
 .modal-description {
 	color: var(--c-text-secondary);
+	margin-top: 0;
+	margin-bottom: 1.5rem;
 }
 
 .upload-area {
@@ -217,7 +219,7 @@ input, button, select, textarea {
 {
 	border: 1px solid black;
 	width: 280px;
-	height: 350px;
+	height: 400px;
 	object-fit: cover;
 }
 
@@ -249,6 +251,24 @@ input, button, select, textarea {
 canvas{
 	width: 100px;
 	height: 100px;
+}
+
+.algorithm-label{
+	font-weight: 500;
+	font-size: 1.15rem;
+	margin-bottom: 0.5rem;
+	font-weight: 550;
+}
+
+.main-content{
+	padding: 1rem 1.5rem;
+	padding-bottom: 0;
+}
+
+.algorithm-input{
+	font-size: 1.05rem;
+	outline: 1px solid rgb(121, 121, 121);
+	border: none;
 }
 
 @media (max-width: 600px) {
