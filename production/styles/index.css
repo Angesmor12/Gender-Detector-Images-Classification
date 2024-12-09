@@ -238,9 +238,17 @@ input, button, select, textarea {
 	margin-left: 0.3rem;
 }
 
+.canvas-container{
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: center;
+	margin-top: 1rem;
+}
+
 canvas{
-	width: 200px;
-	height: 350px;
+	width: 100px;
+	height: 100px;
 }
 
 @media (max-width: 600px) {
