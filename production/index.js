@@ -179,7 +179,6 @@ function handleFiles(files) {
 function showPrediction(value){
 
   const classValue = value.indexOf(Math.max(...value))
-
   loadingImage.classList.add("hidden")
   predictionContainer.classList.remove("invisible")
 
