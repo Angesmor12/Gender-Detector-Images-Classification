@@ -1,12 +1,16 @@
 
 let allow = 1
 let loadingImage = document.querySelector(".loading-image-container")
-let path = "model_alexnet.onnx"
-let width = 224
-let height = 224
+let path = "./models/model_b.onnx"
+let width = 50
+let height = 50
 let channels = 3
 let rgb = 1
-let nor = 1
+let nor = 0
+let loadPath = ""
+let session = ""
+const predictionText = document.querySelector(".prediction-value")
+const predictionContainer = document.querySelector(".prediction-container")
 
 document.querySelector(".algorithm-input-test").addEventListener("change", (e)=>{
   path = e.target.value
@@ -17,12 +21,12 @@ document.querySelector(".algorithm-input-test").addEventListener("change", (e)=>
   nor = parseInt(e.target.selectedOptions[0].dataset.nor)
 })
 
-const predictionText = document.querySelector(".prediction-value")
-const predictionContainer = document.querySelector(".prediction-container")
-
 async function predict(inputFeatures,path, key) {
 
-    const session = await ort.InferenceSession.create(path);
+    if (loadPath != path)
+    {  
+      session = await ort.InferenceSession.create(path);
+    }
 
     const input = new Float32Array(inputFeatures);
     const tensor = new ort.Tensor('float32', input, [1, channels, width, height]);
@@ -34,6 +38,8 @@ async function predict(inputFeatures,path, key) {
 
     const logits = result.output.data; 
     const probabilities = softmax(logits);
+
+    loadPath = path
 
     return probabilities;
 }
@@ -164,7 +170,7 @@ function handleFiles(files) {
               normalizedData.set(grayChannel, 0);
             }
             
-            const predictedValue = await predict(normalizedData, "./models/" + path, "input");
+            const predictedValue = await predict(normalizedData, path, "input");
 
             showPrediction(predictedValue)
         };
@@ -228,9 +234,12 @@ async function captureFrame() {
     normalizedData = new Float32Array(width * height);
     normalizedData.set(grayChannel, 0);
   }
+
+
+  context.putImageData(rawData, 0, 0);
   
 
-  const predictedValue = await predict(normalizedData, "./models/" + path, "input");
+  const predictedValue = await predict(normalizedData,path, "input");
 
   showPrediction(predictedValue)  
   

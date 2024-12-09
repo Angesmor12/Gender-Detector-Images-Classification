@@ -14,7 +14,6 @@
     <link rel="icon" href="./images/gen.ico" type="image/x-icon" />
     <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.14.0/dist/onnxruntime-web.min.js"></script>
-
 </head>
 <body>
   <div class="modal">
@@ -32,14 +31,12 @@
     </div>
 
     <select style="width: 100%;" class="algorithm-input-test">
-      <option value="model_alexnet.onnx" data-width="224" data-n="3" data-rgb="1" data-nor="1" selected>model_alexnet.onnx</option>
-      <option value="model_alexnet_p.onnx" data-width="224" data-n="3" data-rgb="1" data-nor="1" selected>model_alexnet_p.onnx</option>
-      <option value="model_r18.onnx" data-width="224" data-n="3" data-rgb="1" data-nor="1" selected>model_r18.onnx</option>
-      <option value="model_r18_p.onnx" data-width="224" data-n="3" data-rgb="1" data-nor="1" selected>model_r18_p.onnx</option>
+      <option value="https://quiet-semifreddo-50dc39.netlify.app/model_r18.onnx" data-width="224" data-n="3" data-rgb="1" data-nor="1">model_r18.onnx</option>
+      <option value="https://quiet-semifreddo-50dc39.netlify.app/model_r18_p.onnx" data-width="224" data-n="3" data-rgb="1" data-nor="1">model_r18_p.onnx</option>
 
-      <option value="model_b.onnx" data-width="50" data-n="3" data-rgb="1" data-nor="0" selected>model_b.onnx</option>
-      <option value="model_b_bw.onnx" data-width="50" data-n="1" data-rgb="0" data-nor="0" selected>model_b_bw.onnx</option>
-      <option value="model_a.onnx" data-width="50" data-n="1" data-rgb="0" data-nor="0" selected>model_a.onnx</option>
+      <option value="./models/model_b.onnx" data-width="50" data-n="3" data-rgb="1" data-nor="0" selected>model_b.onnx</option>
+      <option value="./models/model_b_bw.onnx" data-width="50" data-n="1" data-rgb="0" data-nor="0">model_b_bw.onnx</option>
+      <option value="./models/model_a.onnx" data-width="50" data-n="1" data-rgb="0" data-nor="0">model_a.onnx</option>
     </select>
 
     <div class="modal-body md">
@@ -63,6 +60,7 @@
     <div class="modal-body md2 hidden">
       <h2 class="modal-title">Gender Detector</h2>
       <p class="modal-description">This project uses an AI model trained on a diverse dataset of human facial images to classify gender accurately, leveraging advanced deep learning techniques.</p>
+      <p class="modal-description">For optimal detection, please make sure to position your face closer to the camera</p>
       <div class="video-container"><video id="video" autoplay playsinline style="border: 1px solid black;"></video></div>
       <canvas id="canvas" style="display:none;"></canvas>
     </div>
