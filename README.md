@@ -8,6 +8,6 @@ You can find the images that were used for training here : https://drive.google.
 
 Google colab : https://colab.research.google.com/drive/1kn31UVlDvtn_K8-M3e9sUBV-EkgBiGuK?usp=sharing
 
-You can test the Predictor directly in your browser : https://flight-satisfaction-predictor.vercel.app/
+You can test the Predictor directly in your browser : https://gender-detector-mu.vercel.app
 
 
