@@ -214,12 +214,22 @@ async function captureFrame() {
   const rawData = context.getImageData(0, 0, width, height);
   const data = rawData.data;
 
-  const [rChannel, gChannel, bChannel] = normalizeImages(data);
-    
-  const normalizedData = new Float32Array(3 * width * height);
-  normalizedData.set(rChannel, 0);
-  normalizedData.set(gChannel, width * height);
-  normalizedData.set(bChannel, 2 * width * height);
+  let normalizedData = 0
+
+  if (rgb == 1){
+
+    const [rChannel, gChannel, bChannel] = normalizeImages(data, nor);
+
+    normalizedData = new Float32Array(3 * width * height);
+    normalizedData.set(rChannel, 0);
+    normalizedData.set(gChannel, width * height);
+    normalizedData.set(bChannel, 2 * width * height);}
+  else {
+    const grayChannel = normalizeGrayscale(data);
+    normalizedData = new Float32Array(width * height);
+    normalizedData.set(grayChannel, 0);
+  }
+  
 
   const predictedValue = await predict(normalizedData, "./models/" + path, "input");
 
