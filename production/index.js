@@ -242,8 +242,6 @@ async function captureFrame() {
   const predictedValue = await predict(normalizedData,path, "input");
 
   showPrediction(predictedValue)  
-
-  context.putImageData(rawData, 0, 0);
   
   attempt = 1;
 

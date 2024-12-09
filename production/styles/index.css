@@ -238,6 +238,11 @@ input, button, select, textarea {
 	margin-left: 0.3rem;
 }
 
+canvas{
+	width: 200px;
+	height: 350px;
+}
+
 @media (max-width: 600px) {
 
 	.modal-options span{
