@@ -9,8 +9,6 @@ let rgb = 1
 let nor = 0
 let loadPath = ""
 let session = ""
-const predictionText = document.querySelector(".prediction-value")
-const predictionContainer = document.querySelector(".prediction-container")
 
 document.querySelector(".algorithm-input-test").addEventListener("change", (e)=>{
   path = e.target.value
@@ -21,7 +19,11 @@ document.querySelector(".algorithm-input-test").addEventListener("change", (e)=>
   nor = parseInt(e.target.selectedOptions[0].dataset.nor)
 })
 
+const predictionText = document.querySelector(".prediction-value")
+const predictionContainer = document.querySelector(".prediction-container")
+
 async function predict(inputFeatures,path, key) {
+
 
     if (loadPath != path)
     {  
@@ -203,11 +205,13 @@ let attempt = 1
 async function captureFrame() {
 
   if (allow == 1 && attempt == 1){
-
+    
   attempt = 0;
 
   loadingImage.classList.remove("hidden")
   predictionContainer.classList.add("invisible")
+
+  await new Promise(resolve => setTimeout(resolve, 250));
 
   const context = canvas.getContext('2d');
 
@@ -234,18 +238,17 @@ async function captureFrame() {
     normalizedData = new Float32Array(width * height);
     normalizedData.set(grayChannel, 0);
   }
-
-
-  context.putImageData(rawData, 0, 0);
   
-
   const predictedValue = await predict(normalizedData,path, "input");
 
   showPrediction(predictedValue)  
+
+  context.putImageData(rawData, 0, 0);
   
   attempt = 1;
 
-  await new Promise(resolve => setTimeout(resolve, 3000));
+  await new Promise(resolve => setTimeout(resolve, 1500));
+  
   requestAnimationFrame(captureFrame);
 }
 }
