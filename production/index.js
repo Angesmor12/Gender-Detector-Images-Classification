@@ -5,16 +5,16 @@ let path = "model_alexnet.onnx"
 let width = 224
 let height = 224
 let channels = 3
+let rgb = 1
+let nor = 1
 
 document.querySelector(".algorithm-input-test").addEventListener("change", (e)=>{
   path = e.target.value
   width = parseInt(e.target.selectedOptions[0].dataset.width)
   height = parseInt(e.target.selectedOptions[0].dataset.width)
   channels = parseInt(e.target.selectedOptions[0].dataset.n)
-
-  console.log(height)
-  console.log(width)
-  console.log(channels)
+  rgb = parseInt(e.target.selectedOptions[0].dataset.rgb)
+  nor = parseInt(e.target.selectedOptions[0].dataset.nor)
 })
 
 const predictionText = document.querySelector(".prediction-value")
@@ -80,13 +80,22 @@ function softmax(logits) {
   return expLogits.map(value => value / sumExp);
 }
 
-function normalizeImages(data) {
+function normalizeImages(data, nor) {
   const rChannel = [];
   const gChannel = [];
   const bChannel = [];
 
-  const mean = [0.485, 0.456, 0.406];
-  const std = [0.229, 0.224, 0.225];
+  let mean = []
+  let std = []
+
+  if (nor == 1)
+  {
+  mean = [0.485, 0.456, 0.406];
+  std = [0.229, 0.224, 0.225];}
+  else {
+  mean = [0.5, 0.5, 0.5];
+  std = [0.5, 0.5, 0.5];
+  }
 
   for (let i = 0; i < data.length; i += 4) {
       rChannel.push((data[i] / 255 - mean[0]) / std[0]);     
@@ -95,6 +104,19 @@ function normalizeImages(data) {
   }
 
   return [rChannel, gChannel, bChannel];
+}
+
+function normalizeGrayscale(data) {
+  const grayChannel = [];
+  const mean = 0.5; 
+  const std = 0.5; 
+
+  for (let i = 0; i < data.length; i += 4) {
+    const grayscaleValue = (data[i] + data[i + 1] + data[i + 2]) / (3 * 255);
+    grayChannel.push((grayscaleValue - mean) / std);
+  }
+
+  return grayChannel;
 }
 
 // File management function
@@ -125,14 +147,23 @@ function handleFiles(files) {
     
             const imageData = ctx.getImageData(0, 0, width, height);
             const data = imageData.data;
-    
-            const [rChannel, gChannel, bChannel] = normalizeImages(data);
-    
-            const normalizedData = new Float32Array(3 * width * height);
-            normalizedData.set(rChannel, 0);
-            normalizedData.set(gChannel, width * height);
-            normalizedData.set(bChannel, 2 * width * height);
-    
+
+            let normalizedData = 0
+
+            if (rgb == 1){
+
+              const [rChannel, gChannel, bChannel] = normalizeImages(data, nor);
+      
+              normalizedData = new Float32Array(3 * width * height);
+              normalizedData.set(rChannel, 0);
+              normalizedData.set(gChannel, width * height);
+              normalizedData.set(bChannel, 2 * width * height);}
+            else {
+              const grayChannel = normalizeGrayscale(data);
+              normalizedData = new Float32Array(width * height);
+              normalizedData.set(grayChannel, 0);
+            }
+            
             const predictedValue = await predict(normalizedData, "./models/" + path, "input");
 
             showPrediction(predictedValue)
