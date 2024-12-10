@@ -6,7 +6,7 @@ A machine learning project for classifying images based on gender. This reposito
 
 You can find the images that were used for training here : https://drive.google.com/drive/folders/1QNuYy4Aa3_-A6CZ8Cmt0eecJAgshHAVZ?usp=drive_link
 
-Google colab : https://colab.research.google.com/drive/1kn31UVlDvtn_K8-M3e9sUBV-EkgBiGuK?usp=sharing
+Google colab : [https://colab.research.google.com/drive/1kn31UVlDvtn_K8-M3e9sUBV-EkgBiGuK?usp=sharing](https://colab.research.google.com/drive/128G5xr2l8-lojeeAJldFn4uNNp13J4Nv?usp=sharing)
 
 You can test the Predictor directly in your browser : https://gender-detector-mu.vercel.app
 
