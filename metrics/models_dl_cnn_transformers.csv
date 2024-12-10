@@ -1,0 +1,3 @@
+,Architecture,Accuracy,Loss,Validation-Accuracy
+0,Transformer,0.472,0.7051122076809406,0.4985835694050991
+1,Transformer_pretrained,0.952,0.14131722290767357,0.9527856468366384
