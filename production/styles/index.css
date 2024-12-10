@@ -219,8 +219,12 @@ input, button, select, textarea {
 {
 	border: 1px solid black;
 	width: 280px;
-	height: 400px;
+	height: 370px;
 	object-fit: cover;
+}
+
+.md2{
+	padding-bottom: 0.25rem !important;
 }
 
 .prediction-container{
@@ -228,6 +232,7 @@ input, button, select, textarea {
 	flex-wrap: wrap;
 	padding: 1rem 1.5rem;
 	justify-content: center;
+	padding-top: 0;
 }
 
 .prediction-container p {
