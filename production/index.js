@@ -1,11 +1,11 @@
 
 let allow = 1
 let loadingImage = document.querySelector(".loading-image-container")
-let path = "./models/model_a.onnx"
+let path = "./models/model_b.onnx"
 let width = 50
 let height = 50
-let channels = 1
-let rgb = 0
+let channels = 3
+let rgb = 1
 let nor = 0
 let loadPath = ""
 let session = ""
