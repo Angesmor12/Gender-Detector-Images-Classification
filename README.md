@@ -1,4 +1,4 @@
-# Gende Detector ( Images Classification )
+# Gender Detector ( Images Classification )
 
 Artificial Intelligence Project Focused on Image Classification Models
 
